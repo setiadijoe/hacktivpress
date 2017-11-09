@@ -46,9 +46,28 @@ function editAnArticle (req, res) {
 }
 
 function getByAuthor (req, res) {
-  Article.findOne({author: req.params.author})
+  Article.find({author: req.params.author})
   .then(article => {
     res.status(200).send(article)
+  })
+  .catch(err => res.status(400).send(err))
+}
+
+function getByCategory (req, res) {
+  Article.find({category: req.params.category})
+  .then(article => {
+    res.status(200).send(article)
+  })
+  .catch(err => res.status(400).send(err))
+}
+
+function removeArticle (req, res) {
+  Article.findByIdAndRemove(req.params.id)
+  .then(deleted => {
+    res.status(200).send({
+      message: 'article has been deleted',
+      deleted
+    })
   })
   .catch(err => res.status(400).send(err))
 }
@@ -58,5 +77,7 @@ module.exports = {
   getOneArticle,
   createAnArticle,
   editAnArticle,
-  getByAuthor
+  getByAuthor,
+  getByCategory,
+  removeArticle
 }
