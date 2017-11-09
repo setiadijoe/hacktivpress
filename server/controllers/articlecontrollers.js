@@ -28,8 +28,35 @@ function createAnArticle (req, res) {
   .catch(err => res.status(400).send(err))
 }
 
+function editAnArticle (req, res) {
+  Article.findByIdAndUpdate(req.params.id, {
+    $set: {
+      title: req.body.title,
+      content: req.body.content,
+      category: req.body.category
+    }
+  }, {new: true})
+  .then(article => {
+    res.status(200).send({
+      article,
+      message: 'An article has been edited'
+    })
+  })
+  .catch(err => res.status(400).send(err))
+}
+
+function getByAuthor (req, res) {
+  Article.findOne({author: req.params.author})
+  .then(article => {
+    res.status(200).send(article)
+  })
+  .catch(err => res.status(400).send(err))
+}
+
 module.exports = {
   getAllArticles,
   getOneArticle,
-  createAnArticle
+  createAnArticle,
+  editAnArticle,
+  getByAuthor
 }
