@@ -10,18 +10,24 @@ const http = axios.create({
 Vue.use(Vuex)
 
 const state = {
-
+  article: [],
+  loginState: false
 }
 
 const mutations = {
-
+  signIn (state, payload) {
+    state.loginState = payload
+  }
 }
 
 const actions = {
+  login ({ commit }, userdata) {
+    http.post('/users/signin', userdata)
+  }
 
 }
 
 const store = Vuex.Store({
-  
+  state, mutations, actions
 })
 

@@ -15,7 +15,7 @@
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
           <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-          <button class="btn btn-primary my-2 my-sm-0" v-if="stateLogin === false">Sign In</button>
+          <router-link to="/login"><a class="btn btn-primary my-2 my-sm-0" v-if="stateLogin === false">Sign In</a></router-link>
           <button class="btn btn-danger my-2 my-sm-0" v-if="stateLogin === true">Sign Out</button>
         </form>
       </div>
@@ -30,7 +30,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      stateLogin: true
+      stateLogin: false
     }
   }
 }

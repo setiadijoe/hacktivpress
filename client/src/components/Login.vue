@@ -1,22 +1,29 @@
 <template>
   <div>
     <div class="form-group">
-      <label class="col-form-label" for="inputDefault">UserName</label>
-      <input type="text" class="form-control" id="inputDefault">
+      <label class="col-form-label" >UserName</label><br>
+      <input type="text" v-model="login.username">
     </div>
     <div class="form-group">
-      <label class="col-form-label" for="inputDefault">Password</label>
-      <input type="password" class="form-control" id="inputDefault">
+      <label class="col-form-label" >Password</label><br>
+      <input type="password" v-model="login.password">
     </div>
     <button type="submit" class="btn btn-primary">Sign In</button>
     <small>Don't have any account? Click Sign Up</small>
-    <button type="submit" class="btn btn-secondary">Sign Up</button>
+    <router-link to="/register" type="submit" class="btn btn-secondary">Sign Up</router-link>
   </div>
 </template>
 
 <script>
 export default {
-
+  data () {
+    return {
+      login: {
+        username: '',
+        password: ''
+      }
+    }
+  }
 }
 </script>
 

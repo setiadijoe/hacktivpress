@@ -1,19 +1,19 @@
 <template>
-  <div @submit.prevent="">
+  <form @submit.prevent="register()">
     <div class="form-group">
-      <label class="col-form-label" for="inputDefault">Name</label>
-      <input type="text" class="form-control" v-model="signUp.name">
+      <label class="col-form-label">Name</label><br>
+      <input type="text" v-model="signUp.name">
     </div>
     <div class="form-group">
-      <label class="col-form-label" for="inputDefault">UserName</label>
-      <input type="text" class="form-control" v-model="signUp.username">
+      <label class="col-form-label">UserName</label><br>
+      <input type="text" v-model="signUp.username">
     </div>
     <div class="form-group">
-      <label class="col-form-label" for="inputDefault">Password</label>
-      <input type="password" class="form-control" v-model="signUp.password">
+      <label class="col-form-label">Password</label><br>
+      <input type="password" v-model="signUp.password">
     </div>
     <button type="submit" class="btn btn-primary">Sign Up</button>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -28,7 +28,13 @@ export default {
     }
   },
   methods: {
-    
+    register () {
+      this.$http.post('/users/signup', this.signUp)
+      .then(({data}) => {
+        console.log(data);
+      })
+      .catch(err => console.error(err))
+    }
   }
 }
 </script>
