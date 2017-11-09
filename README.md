@@ -15,6 +15,9 @@ List of basic routes:
 |'/users/signin'| POST | user sign in into the application |
 |'/users/signup'| POST | user sign up for get account |
 |'/articles'| GET | getting all articles from database |
+|'/articles/:id'| GET | getting one article with specific id|
 |'/articles'| POST | input a new articles into database |
 |'/articles/:id'| PUT | edit a significant articles |
 |'/articles/:id'| DELETE | delete a significant articles |
+|'/articles/:category'| GET | getting all articles with significant category|
+|'/articles/:author'| GET | getting all articles with significant author|
